@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .layout article div {
+            height: 100px;
+        }
+
+        .left-center-right {
+            display: flex;
+        }
+
+        .layout.flex .left {
+            width: 300px;
+            background: red;
+        }
+
+        .layout.flex .center {
+            flex: 1;
+            background: green;
+        }
+
+        .layout.flex .right {
+            width: 300px;
+            background: blue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <section class="layout flex">
+        <article class="left-center-right-">
+            <div class="left">
+                我是 left
+            </div>
+            <div class="center">
+                <h1>flex布局解决方案</h1>
+                我是 center
+            </div>
+            <div class="right">
+                我是 right
+            </div>
+
+        </article>
+    </section>
+
+</body>
+
+</html>
