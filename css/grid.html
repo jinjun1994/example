@@ -10,26 +10,24 @@
             margin: 0;
         }
 
-        .layout article div {
-            height: 100px;
+        /* 重要：设置容器为网格布局，宽度为100% */
+        .layout.grid .left-center-right {
+            display: grid;
+            width: 100%;
+            grid-template-rows: 100px;
+            grid-template-columns: 300px auto 300px;  /* 重要：设置网格为三列，并设置每列的宽度。即可。*/
+
         }
 
-        .left-center-right {
-            display: flex;
-        }
-
-        .layout.flex .left {
-            width: 300px;
+        .layout.grid .left {
             background: red;
         }
 
-        .layout.flex .center {
-            flex: 1;
+        .layout.grid .center {
             background: green;
         }
 
-        .layout.flex .right {
-            width: 300px;
+        .layout.grid .right {
             background: blue;
         }
     </style>
@@ -37,13 +35,13 @@
 </head>
 
 <body>
-    <section class="layout flex">
+    <section class="layout grid">
         <article class="left-center-right">
             <div class="left">
                 我是 left
             </div>
             <div class="center">
-                <h1>flex布局解决方案</h1>
+                <h1>网格布局解决方案</h1>
                 我是 center
             </div>
             <div class="right">

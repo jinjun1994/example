@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTMLElement</title>
+</head>
+<body>
+	<form action="">
+		<input type="text">
+	</form>
+	<script>
+		let node = document.querySelector('input')
+		let form = document.querySelector('form')
+		console.log(node.constructor)
+		console.log('------------Node.prototype-------------')
+		for (let key in Node.prototype) {
+			console.log(`${key} = ${node[key]}`)
+		}
+		console.log('------------Element.prototype-------------')
+		for (let key in Element.prototype) {
+			if (!(key in Node.prototype)) {
+				console.log(`${key} = ${node[key]}`)
+			}
+		}
+		console.log('------------HTMLElement.prototype-------------')
+		for (let key in HTMLElement.prototype) {
+			if (!(key in Element.prototype)) {
+				console.log(`${key} = ${node[key]}`)
+			}
+		}
+		console.log('------------HTMLInputElement.prototype-------------')
+		for (let key in HTMLInputElement.prototype) {
+			if (!(key in HTMLElement.prototype)) {
+				console.log(`${key} = ${node[key]}`)
+			}
+		}
+		console.log('------------HTMLFormElement.prototype-------------')
+		for (let key in HTMLFormElement.prototype) {
+			if (!(key in HTMLElement.prototype)) {
+				console.log(`${key} = ${form[key]}`)
+			}
+		}
+	</script>
+</body>
+</html>
+
+<!-- 
+Object <- Node <- Element <- HTMLElement <- HTML*Element
+每种元素都对应了一个构造器，即对 DOM 接口的实现类
+-->

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>nodeList</title>
+</head>
+<body>
+	<!-- nodeList -->
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+
+	<script>
+		// nodeList
+		let ulChilds = document.querySelector('ul').childNodes;
+
+		//Array.prototype.forEach.call(ulChilds, value => console.log(value))
+		[].forEach.call(ulChilds, value => console.log(value))
+
+		// HTMLCollection
+		let images = document.images
+		let embeds = document.embeds
+		let plugins = document.plugins
+		let links = document.links
+		let forms = document.forms
+		let scripts = document.scripts
+		let anchors = document.anchors
+		let applets = document.applets
+		let children = document.children
+
+		// StyleSheetList
+		let styleSheets = document.styleSheets
+
+		let currentScript = document.currentScript
+		console.log(currentScript)
+
+		// DOMTokenList
+		// Element.prototype.classList
+
+		// NamedNodeMap
+		// Element.prototype.attributes
+
+		// DOMStringMap
+		// HTMLElement.prototype.dataset
+
+		// 转成数组
+		// [...ulChilds].forEach(value => console.log(value))
+		Array.from(ulChilds).forEach(value => console.log(value));
+		[].slice.call(ulChilds).forEach(value => console.log(value))
+	</script>
+	
+</body>
+</html>
