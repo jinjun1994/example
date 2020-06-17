@@ -131,14 +131,28 @@
         //添加模型
         const pArr = []
         const posArr = []
-        for (let index = 0; index < 30; index++) {
-            posArr[index] = Cesium.Cartesian3.fromDegrees(-123.0744619+0.01*index*Math.round(Math.random()*10),
-             44.0503706+0.01*index*Math.round(Math.random()*10), 20+Math.random()*100);
+        for (let index = 0; index < 15; index++) {
+            // posArr[index] = Cesium.Cartesian3.fromDegrees(-123.0744619+0.01*index*Math.round(Math.random()*10),
+            posArr[index] = Cesium.Cartesian3.fromDegrees(-123.0744619+0.1*index,
+             44.0503706+0.01, 100);
+           // 一字型
+
             pArr[index] = scene.primitives.add(Cesium.Model.fromGltf({
                 //这里需要把模型路径改下(如果你用的还是HelloWord.html的话就用这个,不是的话请自行修改)
-                url: './drone.glb',
+                url: '../drone.glb',
                 modelMatrix: Cesium.Transforms.headingPitchRollToFixedFrame(posArr[index], hpRoll, Cesium.Ellipsoid.WGS84, fixedFrameTransform),
-                minimumPixelSize: 128
+                minimumPixelSize: 80,
+                id :index,
+                // silhouetteSize:1,  // 轮廓
+                ...(index===5?{silhouetteSize:1}:{}),
+                silhouetteColor: Cesium.Color.ORANGERED ,
+                ...(index===8?{color: Cesium.Color.RED}:{   color: Cesium.Color.WHITE}),
+             
+                colorBlendMode:Cesium.ColorBlendMode.REPLACE,  // 颜色混合模式 https://cesium.com/docs/cesiumjs-ref-doc/Model.html https://cesium.com/docs/cesiumjs-ref-doc/global.html#ColorBlendMode
+                attributes : {
+    color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.RED)
+  },
+
             }));
             pArr[index].readyPromise.then(function (model) {
             moduleObj = model
@@ -151,11 +165,16 @@
            
         });
         }
+        var attributes = pArr[1];//获取某个实例的属性集
+    // attributes.color = Cesium.ColorGeometryInstanceAttribute.toValue( Cesium.Color.RED )
+
+    pArr[2].color = Cesium.ColorGeometryInstanceAttribute.toValue( Cesium.Color.WHITE )
+    pArr[3].color = Cesium.ColorGeometryInstanceAttribute.toValue( Cesium.Color.RED  )
         var planePrimitive = scene.primitives.add(Cesium.Model.fromGltf({
             //这里需要把模型路径改下(如果你用的还是HelloWord.html的话就用这个,不是的话请自行修改)
-            url: './drone.glb',
+            url: '../drone.glb',
             modelMatrix: Cesium.Transforms.headingPitchRollToFixedFrame(position, hpRoll, Cesium.Ellipsoid.WGS84, fixedFrameTransform),
-            minimumPixelSize: 128
+            minimumPixelSize: 80
         }));
 
 
